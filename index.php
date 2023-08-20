@@ -1,5 +1,18 @@
 <?php
 
-$teste = "teste";
+function firstFunction(string $param): never
+{
+    echo $param;
+    secondFunction();
+}
 
-var_dump($teste);
+function secondFunction(): never
+{
+    throw new Exception("Mensagem");
+}
+
+try {
+    firstFunction("teste");
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
